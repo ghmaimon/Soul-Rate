@@ -2,13 +2,10 @@ services:
   - docker
 jobs:
   include:
-    - language: python3
-      python3:
-        - "3.9.0"
-      before_script: pip install docker-compose
-      script: docker-compose run api sh -c "python3 manage.py test && flake8"
-    - language: node_js
-    node_js:
-      - "14.0"
+    language: python3
+    python3:
+      - "3.9.1"
+    before_script: pip install docker-compose
+    script: docker-compose run api sh -c "python3 manage.py test && flake8"
 after_success:
   - docker build
