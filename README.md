@@ -1,8 +1,10 @@
 # Soul-Rate
-complete web application to publish, rate and give feedback about movies and series, with membership system and advanced search with tags, titles and names of actors.
 
-# run docker image:
+    complete web application to publish, rate and give feedback about movies and series, with membership system and advanced search with tags, titles and names of actors.
 
-    sudo chmod 666 /var/run/docker.sock
+# run back-end docker image:
+
+    cd Back-End
+    (linux) sudo chmod 666 /var/run/docker.sock
     docker build .
     docker-compose build

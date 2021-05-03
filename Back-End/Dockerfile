@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.9.1
 LABEL key="Soul-Rate By Ghordou Mimoun"
 
 ENV PYTHONUNBUFFERED 1
@@ -11,5 +11,6 @@ COPY ./api /api
 WORKDIR /api
 
 RUN adduser ghmrun
+RUN chown ghmrun:ghmrun -R .
 USER ghmrun 
 
