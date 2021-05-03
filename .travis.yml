@@ -5,7 +5,7 @@ jobs:
     language: python3
     python3:
       - "3.9.1"
-    before_script: pip install docker-compose && cd Back-End
+    before_script: pip install docker-compose
     script: docker-compose -f Back-End/docker-compose.yml  run api sh -c "python3 manage.py test && flake8"
 after_success:
   - docker build
