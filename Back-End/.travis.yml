@@ -1,0 +1,8 @@
+language: python3
+
+python3:
+  - "3.9.0"
+services: 
+  - docker
+before_script: pip install docker-compose
+script: docker-compose run api sh -c "python3 manage.py test && flake8"
