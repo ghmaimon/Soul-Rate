@@ -1,6 +1,6 @@
 services: 
-        - docker
-matrix:
+  - docker
+jobs:
   include:
     - language: python3
       python3:
