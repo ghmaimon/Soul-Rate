@@ -3,10 +3,10 @@ version:  "3.8"
 services: 
     api: 
         build: 
-            context: .
+            context: ./Back-End
         ports: 
             - "8000:8000"
         volumes:
-            - ./api:/api
+            - ./Back-End/api:/Back-End/api
         command: >
             sh -c "python3 manage.py runserver 0.0.0.0:8000"
