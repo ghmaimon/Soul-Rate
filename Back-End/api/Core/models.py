@@ -1,14 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
                                         PermissionsMixin
+import re
 
 
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password, **extra):
         # to create and save a user
+        if not email:
+            raise ValueError("email must be provided!")
+        pattern = r"[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]"
+        if not re.search(pattern, email):
+            raise ValueError("email not valide!")
         user = self.model(email=self.normalize_email(email), **extra)
         user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_superuser(self, email, password, **extra):
+        # to create and save a user
+        if not email:
+            raise ValueError("email must be provided!")
+        pattern = r"[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]"
+        if not re.search(pattern, email):
+            raise ValueError("email not valide!")
+        user = self.model(email=self.normalize_email(email), **extra)
+        user.set_password(password)
+        user.is_superuser = True
+        user.is_staff = True
         user.save(using=self._db)
 
         return user
