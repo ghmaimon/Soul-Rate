@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from.models import Rating,Movie
+from movie_rate.models import Rating, Movie
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+
 
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,12 +26,15 @@ class RatingSerializer(serializers.ModelSerializer):
             'user',
             'movie'
         ]
+
+
 class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
-        token = Token.objects.create(user = user)
+        Token.objects.create(user=user)
         return user
+
     class Meta:
         model = User
         fields = [
@@ -39,7 +43,10 @@ class UserSerializer(serializers.ModelSerializer):
             'password',
             'email',
         ]
-        extra_kwargs = {'password': {'write_only': True, 'min_length': 8,'required':True}}
-
-
-
+        extra_kwargs = {
+            'password': {
+                'write_only': True,
+                'min_length': 8,
+                'required': True
+            }
+        }

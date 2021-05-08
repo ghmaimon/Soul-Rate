@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.core.validators import MinValueValidator,MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Movie(models.Model):
@@ -12,8 +12,8 @@ class Movie(models.Model):
         ratings = Rating.objects.filter(movie=self)
         temp = 0
         for r in ratings:
-            temp+=r.stars
-        if len(ratings)==0:
+            temp += r.stars
+        if len(ratings) == 0:
             return 0
         else:
             return temp/len(ratings)
@@ -32,10 +32,23 @@ class Movie(models.Model):
     def __str__(self):
         return self.title
 
+
 class Rating(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='ratings')
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='ratings')
-    stars = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    movie = models.ForeignKey(
+        Movie,
+        on_delete=models.CASCADE,
+        related_name='ratings'
+    )
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name='ratings'
+    )
+    stars = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    rate_date = models.DateTimeField(auto_now_add=True, blank=True)
+
     class Meta:
-        unique_together = (('user','movie'),)
-        index_together = (('user','movie'),)
+        unique_together = (('user', 'movie'), )
+        index_together = (('user', 'movie'), )
