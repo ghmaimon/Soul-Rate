@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Movie(models.Model):
 
     title = models.CharField(max_length=30)
-    description = models.CharField(max_length=360)
+    description = models.TextField(max_length=1023)
 
     def avrRating(self):
         ratings = Rating.objects.filter(movie=self)
