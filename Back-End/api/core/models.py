@@ -6,11 +6,11 @@ import re
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, password, **extra):
+    def create_user(self, email, password=None, **extra):
         # to create and save a user
         if not email:
             raise ValueError("email must be provided!")
-        pattern = r"[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]"
+        pattern = r"[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]"
         if not re.search(pattern, email):
             raise ValueError("email not valide!")
         user = self.model(email=self.normalize_email(email), **extra)
@@ -19,15 +19,10 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, password, **extra):
+    def create_superuser(self, email, password=None, **extra):
         # to create and save a user
-        if not email:
-            raise ValueError("email must be provided!")
-        pattern = r"[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]"
-        if not re.search(pattern, email):
-            raise ValueError("email not valide!")
-        user = self.model(email=self.normalize_email(email), **extra)
-        user.set_password(password)
+        user = self.create_user(email=email, password=password, **extra)
+        user.is_active = True
         user.is_superuser = True
         user.is_staff = True
         user.save(using=self._db)
@@ -37,16 +32,26 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     # costum user model
-    email = models.EmailField(max_length=255, unique=True)
-    firstname = models.CharField(max_length=50, null=True, blank=False)
-    lastname = models.CharField(max_length=50, null=True, blank=False)
-    middlename = models.CharField(max_length=50, null=True)
-    birthday = models.DateField(null=True, blank=False)
-    phone = models.CharField(max_length=15, null=True)
+    email = models.EmailField(max_length=255, unique=True, null=False)
+    first_name = models.CharField(max_length=255, null=False)
+    last_name = models.CharField(max_length=255, null=False)
+    GENDER_CHOICES = (
+        ('M', "Male"),
+        ('F', 'Female'),
+    )
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=False)
+    birthday = models.DateField(null=True)
+    phone = models.CharField(max_length=30, null=True)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    password = models.CharField(max_length=50)
+    address = models.CharField(max_length=255)
+
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'gender']
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+    EMAIL_FIELD = 'email'
+
+    def __str__(self):
+        return self.email
