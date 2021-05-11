@@ -8,3 +8,6 @@
     (linux) sudo chmod 666 /var/run/docker.sock
     docker build .
     docker-compose build
+
+# for test the api:
+    docker-compose run api sh -c "python3 manage.py test && flake8"

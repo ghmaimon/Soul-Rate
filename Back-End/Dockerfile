@@ -1,9 +1,10 @@
-FROM python:3.9.1
+FROM python:3.8.7
 LABEL key="Soul-Rate By Ghordou Mimoun"
 
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requerements.txt /requerements.txt
+
 RUN pip install -r /requerements.txt
 
 RUN mkdir /api
