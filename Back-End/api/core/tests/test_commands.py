@@ -4,7 +4,7 @@ from django.db.utils import OperationalError
 from django.test import TestCase
 
 
-class CommandTest(TestCase):
+class CommandTestCase(TestCase):
 
     def test_for_db_ready(self):
         # test waiting for db when db is available

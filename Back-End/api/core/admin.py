@@ -20,8 +20,6 @@ class UserAdmin(BaseUserAdmin):
                     'last_name',
                     'gender',
                     'birthday',
-                    'phone',
-                    'address',
                 )
             }
         ),
@@ -57,8 +55,6 @@ class UserAdmin(BaseUserAdmin):
                     'last_name',
                     'gender',
                     'birthday',
-                    'phone',
-                    'address',
                 )
             }
         ),

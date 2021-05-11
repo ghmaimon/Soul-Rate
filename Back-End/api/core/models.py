@@ -41,11 +41,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=False)
     birthday = models.DateField(null=True)
-    phone = models.CharField(max_length=30, null=True)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    address = models.CharField(max_length=255)
-
     REQUIRED_FIELDS = ['first_name', 'last_name', 'gender']
 
     objects = UserManager()
