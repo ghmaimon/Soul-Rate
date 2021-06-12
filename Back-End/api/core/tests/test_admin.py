@@ -19,7 +19,6 @@ class AdminTestCase(TestCase):
             first_name="test",
             last_name="test",
             birthday=dt.datetime.now(),
-            phone="06654822215",
             is_active=True
         )
 
