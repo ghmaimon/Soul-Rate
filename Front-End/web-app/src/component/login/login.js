@@ -24,7 +24,7 @@ handlePassword=(e)=>{
     <div id="row" className="row rounded mx-auto">
       <div className="position-relative pt-5 text-light">
         <form className="border-orange">
-            <h3 className="position-absolute start-50 translate-middle">Account Login</h3>
+            <h3 >Login</h3>
             
 
             <div className="form-group ">
@@ -50,7 +50,7 @@ handlePassword=(e)=>{
 
               </div>
             <div className="row row-cols-lg-4 pb-5 py-5 px-3">
-            <button type="submit" className="btn btn-warning btn-lg btn-block position-absolute start-50 translate-middle">Login</button>
+            <button type="submit" className="btn btn-warning btn-lg btn-block">Login</button>
           </div>
         </form>
       </div>

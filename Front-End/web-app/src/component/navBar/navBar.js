@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import logo from '../../images/logo.png'
 import './navBar.css'
+import {Navigation} from 'react-minimal-side-navigation';
+
 class NavBar extends Component{
   render(){
     return(
