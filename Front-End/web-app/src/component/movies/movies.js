@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom'
 
 import { Button } from 'bootstrap';
 function Movies(propsMovie) {
+
+
+  
   return(
     <div className="col-lg-3 col-md-6 col-xs-12">
 

@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './component/home/home';
-import Movies from './component/movies/movies';
+import MoviesWraper from './component/movieWraper/movieWraper';
 import News from './component/news/news';
 import Login from './component/login/login';
 import SignIn from './component/sign-In/signIn';
@@ -22,7 +22,7 @@ class App extends Component{
 
             <Switch>
                 <Route exact path='/' component={Home}></Route>
-                <Route path='/movies' component={Movies}></Route>
+                <Route path='/movies' component={MoviesWraper}></Route>
                 <Route path='/news' component={News}></Route>               
                 <Route path='/login' component={Login}></Route>
                 <Route path='/sign_in' component={SignIn}></Route>

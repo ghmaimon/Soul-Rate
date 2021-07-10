@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './moviesWraper.css'
+//import './moviesWraper.css'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
@@ -10,8 +10,19 @@ class MoviesWraper extends Component{
         listMovies:[]
     }
 
-    componentDidMount() {
-        axios.get("0.0.0.0")
+    async componentDidMount() {
+        await axios.get("http://0.0.0.0:8000/api/movies/movies/", {
+            headers: {
+                "Authorization": "Token 14c3eaaa37d8a17430b3a866ed0bd1b4fa2da432"
+            }
+        }).then(
+            (res) => {
+                this.setState({...this.state, listMovies: res.data})
+                console.log(res.data);
+            }
+        )
+
+        console.log(this.state.listMovies);
     }
     render(){
 
@@ -26,3 +37,5 @@ class MoviesWraper extends Component{
         )
     }
 }
+
+export default MoviesWraper;
