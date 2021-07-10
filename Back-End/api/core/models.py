@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
                                         PermissionsMixin
 import re
+from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class UserManager(BaseUserManager):
@@ -51,11 +53,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
-
-from django.db import models
-from django.contrib.auth import get_user_model
-from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db.models.fields.files import ImageField
 
 
 class Movie(models.Model):
@@ -108,4 +105,3 @@ class Rating(models.Model):
     class Meta:
         unique_together = (('user', 'movie'), )
         index_together = (('user', 'movie'), )
-

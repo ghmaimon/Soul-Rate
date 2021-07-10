@@ -1,15 +1,25 @@
 from django.test import TestCase
-from movie_rate import models
+from core.models import Movie, Rating
 from django.contrib.auth import get_user_model
+from rest_framework.test import APIClient, APITestCase
 
 
-class ModelTests(TestCase):
+class ModelTests(APITestCase):
+
+    def setUp(self):
+        self.client = APIClient()
+        return super().setUp()
 
     def test_create_movie(self):
         # test the result of creating a movie
         title = "movie_title"
         description = "movie_description"
-        movie = models.Movie(
+        movie = Movie()
+        movie.title = title
+        movie.description = description
+        movie.save()
+
+        movie = Movie.objects.get(
             title=title,
             description=description
         )
@@ -21,22 +31,31 @@ class ModelTests(TestCase):
         # test the result of creating a rate with an associated movie and user
         title = "movie_title"
         description = "movie_description"
-        movie = models.Movie(
-            title=title,
-            description=description
-        )
+
+        movie = Movie()
+        movie.title = title
+        movie.description = description
+
+        movie.save()
 
         email = "username@something.com"
         password = "Pass1234"
+
         user = get_user_model().objects.create_user(
-            email=email,
-            password=password
+            email,
+            password
         )
-        user.is_active = True
 
         stars = 4
 
-        rate = models.Rating(
+        rate = Rating(
+            movie=movie,
+            user=user,
+            stars=stars
+        )
+        rate.save()
+
+        rate = Rating.objects.get(
             movie=movie,
             user=user,
             stars=stars

@@ -26,7 +26,9 @@ SECRET_KEY = 'vo&id&hb!@^%3_8l^av8ll^5jp4e#0ykh!pd51le@)m-e0oe_j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
+CORS_ORIGIN_ALLOW_ALL = True
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -42,7 +44,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'user',
     'core',
-    'movie',
+    'movie_rate',
+    'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -53,6 +57,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'

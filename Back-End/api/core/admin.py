@@ -9,9 +9,8 @@ admin.site.register(Rating)
 admin.site.register(Movie)
 
 
-
 class UserAdmin(BaseUserAdmin):
-    ordering = ('id', )
+    ordering = ('id',)
     list_display = ('email', 'first_name', 'last_name', 'gender', )
     list_filter = ('is_active', 'is_staff', 'is_superuser', 'gender', )
     search_fields = ('email', )
