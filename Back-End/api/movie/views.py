@@ -1,33 +1,28 @@
 from rest_framework import viewsets
-from .models import Movie, Rating, User
-from .serializers import UserSerializer, RatingSerializer, MovieSerializer
+from core.models import Movie, Rating
+from .serializers import RatingSerializer, MovieSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
-# from rest_framework.authentication import TokenAuthentication
-# from rest_framework.permissions import IsAuthenticated
-# from django.db.models import Count
+from core.models import User
 
 
 class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
-    # authentication_classes = [TokenAuthentication,]
 
     def update(self, request, *args, **kwargs):
         response = {'message': 'you cannot update like this'}
-        return Response(response, status=status.HTTP_200_OK)
+        return Response(response, status=status.HTTP_401_UNAUTHORIZED)
 
     def create(self, request, *args, **kwargs):
         response = {'message': 'you cannot create like this'}
-        return Response(response, status=status.HTTP_200_OK)
+        return Response(response, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
-    # authentication_classes = [TokenAuthentication,]
-    # permission_classes = [IsAuthenticated,]
 
     @action(detail=True, methods=["POST"])
     def rate_movie(self, request, pk=None):
@@ -62,8 +57,3 @@ class MovieViewSet(viewsets.ModelViewSet):
                 {"message": "error"},
                 status=status.HTTP_404_NOT_FOUND
             )
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer

@@ -3,9 +3,11 @@ from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
 
 from django.utils.translation import ugettext_lazy as _
-
+from core.models import User
 
 class UserSerializer(serializers.ModelSerializer):
+
+    QuerySet = User.objects.all()
 
     def create(self, validated_data):
         # create a user:

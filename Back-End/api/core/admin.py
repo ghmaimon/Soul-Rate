@@ -3,6 +3,11 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
 from . import models
 from django.utils.translation import gettext as _
+from .models import Rating, Movie
+
+admin.site.register(Rating)
+admin.site.register(Movie)
+
 
 
 class UserAdmin(BaseUserAdmin):
