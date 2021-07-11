@@ -4,13 +4,16 @@ from core.models import Rating, Movie, Tag
 
 class TagSerializer(serializers.ModelSerializer):
     # Serializer for tags
+
     class Meta:
         model = Tag
         fields = ['id', 'name']
         read_only_fields = ('id',)
 
 
-class MovieSerializer(serializers.ModelSerializer):
+class MovieDetailSerializer(serializers.ModelSerializer):
+    tags = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Movie
         fields = [
@@ -22,6 +25,16 @@ class MovieSerializer(serializers.ModelSerializer):
             'numberOfRatinfs',
             'image',
             'tags'
+        ]
+
+
+class MovieListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = [
+            'id',
+            'title',
+            'image',
         ]
 
 

@@ -5,7 +5,7 @@ from core.models import Tag, Movie
 from django.contrib.auth import get_user_model
 
 
-from movie_rate.serializers import MovieSerializer, TagSerializer
+from movie_rate.serializers import MovieListSerializer, TagSerializer
 
 TAGS_URL = reverse('movie_rate:tags-list')
 
@@ -39,7 +39,7 @@ class TestTagApi(APITestCase):
         }
         self.client.login(username=body["email"], password=body["password"])
         res = self.client.get(TAGS_URL)
-        tags = Tag.objects.all()
+        tags = Tag.objects.all().order_by('-name')
 
         tagser = TagSerializer(tags, many=True)
 
@@ -101,8 +101,64 @@ class TestTagApi(APITestCase):
         self.assertEqual(len(res1.data), 2)
         self.assertEqual(len(res2.data), 1)
 
-        expected1 = MovieSerializer([self.movie, anotherMovie, ], many=True)
-        expected2 = MovieSerializer([anotherMovie, ], many=True)
+        expected1 = MovieListSerializer(
+            [self.movie, anotherMovie, ],
+            many=True
+        )
+        expected2 = MovieListSerializer(
+            [anotherMovie, ],
+            many=True
+        )
 
         self.assertSequenceEqual(res1.data, expected1.data)
         self.assertSequenceEqual(res2.data, expected2.data)
+
+    def test_create_tag(self):
+        # testing create tag endpoint
+        data = {
+            "name": "action"
+        }
+        body = {
+            "email": "exemple@gmail.com",
+            "password": "password"
+        }
+        self.client.login(username=body["email"], password=body["password"])
+
+        res1 = self.client.post(TAGS_URL, data)
+        exists = Tag.objects.filter(name=data["name"]).exists()
+
+        self.assertEqual(res1.status_code, status.HTTP_201_CREATED)
+
+        self.assertTrue(exists)
+
+    def test_create_invalide_tag(self):
+        # testing create a tag with invalide namea
+        data = {
+            "name": "/*"
+        }
+        body = {
+            "email": "exemple@gmail.com",
+            "password": "password"
+        }
+        self.client.login(username=body["email"], password=body["password"])
+
+        res1 = self.client.post(TAGS_URL, data)
+
+        self.assertEqual(res1.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_create_same_tag(self):
+
+        # testing create a tag with invalide namea
+        data = {
+            "name": "action"
+        }
+        body = {
+            "email": "exemple@gmail.com",
+            "password": "password"
+        }
+        self.client.login(username=body["email"], password=body["password"])
+
+        self.client.post(TAGS_URL, data)
+        res = self.client.post(TAGS_URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)

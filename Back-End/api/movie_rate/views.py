@@ -1,7 +1,10 @@
-from rest_framework import viewsets, mixins
+import re
+from rest_framework import viewsets
+from rest_framework.generics import get_object_or_404
 # from rest_framework import authentication
 from core.models import Movie, Rating, Tag
-from .serializers import RatingSerializer, MovieSerializer, TagSerializer
+from .serializers import RatingSerializer, \
+    MovieDetailSerializer, MovieListSerializer, TagSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
@@ -9,19 +12,33 @@ from rest_framework.decorators import action
 # from rest_framework.permissions import IsAuthenticated
 
 
-class TagListViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+class TagViewSet(viewsets.ModelViewSet):
     # manage all tags in the database
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
-    def get_tags_of_movie(self, request, movieName=None):
-        if movieName:
-            movie = Movie.objects.get(name=movieName)
-            response = {'tags': movie.tags}
-            return Response(response, status=status.HTTP_200_OK)
+    def create(self, request, *args, **kwargs):
+        pattern = r"^(?![a-zA-Z0-9]+).*$"
+        if re.search(pattern, request.data["name"]):
+            return Response(
+                {"Error": "Tag name is not valide!"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        elif Tag.objects.filter(name=request.data["name"]).exists():
+            return Response(
+                {"Error": "Tag name already exists!"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         else:
-            response = {'message': "no movie is provided"}
-            return Response(response, status=status.HTTP_400_BAD_REQUEST)
+            Tag(name=request.data["name"]).save()
+            return Response(
+                {"Succes": "The tag was created"},
+                status=status.HTTP_201_CREATED
+            )
+
+    def list(self, request, *args, **kwargs):
+        serializer = TagSerializer(self.queryset.order_by("-name"), many=True)
+        return Response(serializer.data, status.HTTP_200_OK)
 
 
 class RatingViewSet(viewsets.ModelViewSet):
@@ -39,13 +56,22 @@ class RatingViewSet(viewsets.ModelViewSet):
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
-    serializer_class = MovieSerializer
+    serializer_class = MovieListSerializer
+
+    def list(self, request, *args, **kwargs):
+        serializer = MovieListSerializer(self.queryset, many=True)
+        return Response(serializer.data, status.HTTP_200_OK)
+
+    def retrieve(self, request, pk=None, *args, **kwargs):
+        movie = get_object_or_404(self.queryset, pk=pk)
+        serializer = MovieDetailSerializer(movie)
+        return Response(serializer.data, status.HTTP_200_OK)
 
     @action(detail=False, methods=["GET"], url_path='withTag/(?P<tag>[^/.]+)')
     def withTag(self, request, tag=None):
-
+        # retrieve movies with a given tag
         movies = Movie.objects.filter(tags__in=[tag, ])
-        moviesSer = MovieSerializer(movies, many=True)
+        moviesSer = MovieListSerializer(movies, many=True)
         return Response(moviesSer.data, status.HTTP_200_OK)
 
     @action(detail=True, methods=["POST"])
