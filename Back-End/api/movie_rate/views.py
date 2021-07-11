@@ -1,9 +1,27 @@
-from rest_framework import viewsets
-from core.models import Movie, Rating
-from .serializers import RatingSerializer, MovieSerializer
+from rest_framework import viewsets, mixins
+# from rest_framework import authentication
+from core.models import Movie, Rating, Tag
+from .serializers import RatingSerializer, MovieSerializer, TagSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
+# from rest_framework.authentication import TokenAuthentication
+# from rest_framework.permissions import IsAuthenticated
+
+
+class TagListViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+    # manage all tags in the database
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+    def get_tags_of_movie(self, request, movieName=None):
+        if movieName:
+            movie = Movie.objects.get(name=movieName)
+            response = {'tags': movie.tags}
+            return Response(response, status=status.HTTP_200_OK)
+        else:
+            response = {'message': "no movie is provided"}
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class RatingViewSet(viewsets.ModelViewSet):
@@ -22,6 +40,13 @@ class RatingViewSet(viewsets.ModelViewSet):
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+
+    @action(detail=False, methods=["GET"], url_path='withTag/(?P<tag>[^/.]+)')
+    def withTag(self, request, tag=None):
+
+        movies = Movie.objects.filter(tags__in=[tag, ])
+        moviesSer = MovieSerializer(movies, many=True)
+        return Response(moviesSer.data, status.HTTP_200_OK)
 
     @action(detail=True, methods=["POST"])
     def rate_movie(self, request, pk=None):

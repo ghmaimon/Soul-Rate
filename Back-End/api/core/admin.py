@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
-from . import models
 from django.utils.translation import gettext as _
-from .models import Rating, Movie
+from .models import Rating, Movie, Tag, User
 
 admin.site.register(Rating)
 admin.site.register(Movie)
+admin.site.register(Tag)
 
 
 class UserAdmin(BaseUserAdmin):
@@ -66,4 +66,4 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.unregister(Group)
-admin.site.register(models.User, UserAdmin)
+admin.site.register(User, UserAdmin)

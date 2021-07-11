@@ -55,11 +55,18 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.first_name + " " + self.last_name
 
 
-class Movie(models.Model):
+class Tag(models.Model):
+    name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
+
+class Movie(models.Model):
     title = models.CharField(max_length=30)
     description = models.TextField(max_length=1023)
     image = models.ImageField(upload_to="movies", blank=True)
+    tags = models.ManyToManyField(Tag, default=None, blank=True)
 
     def avrRating(self):
         ratings = Rating.objects.filter(movie=self)
