@@ -57,7 +57,7 @@ class Carousel extends Component{
                 </div>
               </div>
               <div className="card bg-warning">
-                
+                .
               </div>
             </div>
         )
