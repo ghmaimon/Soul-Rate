@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import logo from '../../images/logo.png'
+
+
 import './navBar.css'
 
 var menu_btn = document.querySelector("#menu-btn");
@@ -56,33 +58,38 @@ class NavBar extends Component{
 
     </div>*/}
     <div>
-    <div
-      className="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
-      id="sidebar"
-    >
-      <ul className="nav flex-column text-white w-100">
-        <a href="#" className="nav-link h3 text-white my-2">
-          Responsive SideBar Nav
-        </a>
-        <li href="#" className="nav-link">
-          <i className="bx bxs-dashboard"></i>
-          <span className="mx-2">Home</span>
-        </li>
-        <li href="#" className="nav-link">
-          <i className="bx bx-user-check"></i>
-          <span className="mx-2">Profile</span>
-        </li>
-        <li href="#" className="nav-link">
-          <i className="bx bx-conversation"></i>
-          <span className="mx-2">Contact</span>
-        </li>
-      </ul>
+    <div className="collapse" id="content">
+      <div 
+        className="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+        id="sidebar"
+        >
+        <ul className="nav flex-column text-white w-100">
+          <a href="#" className="border-bottom nav-link h3 text-white my-2">
+            <img className="logo" src={logo} alt="..."/>
+            <h4>Profile Name</h4>
+            <p>see your profile</p>
+          </a>
+          <a href="#" className="nav-link h3 text-white my-2">
+            <i className="bx bxs-dashboard"></i>Home
+          </a>
+          <a href="#" className="nav-link h3 text-white my-2">
+            <i className="bi bi-gear"></i>Setting
+          </a>
+          <a href="#" className="nav-link h3 text-white my-2">
+            <i className="bi bi-question-circle"></i>Help
+          </a>
+          <a href="#" className="nav-link h3 text-white my-2">
+            <i className="bi bi-box-arrow-left"></i>Log out
+          </a>
+        </ul>
+      </div>
     </div>
 
     
-    <div className="p-1 my-container active-cont">
-      <nav className="navbar top-navbar navbar-light bg-light px-5">
-        <a className="btn border-0" id="menu-btn"><i className="bx bx-menu"></i></a>
+    <div
+     className="p-1 my-container active-cont" >
+      <nav className="navbar top-navbar navbar-light px-5">
+        <button className="btn border-0"  id="menu-btn" data-bs-toggle="collapse" href="#content" role="button" aria-expanded="false" aria-controls="content"><i className="bi bi-caret-down-square"></i></button>
       </nav>
     </div>
 

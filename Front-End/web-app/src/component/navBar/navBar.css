@@ -74,17 +74,18 @@ a:link, a:visited{
   
   .side-navbar {
     width: 180px;
-    height: 100%;
-    position: fixed;
+    height: 50%;
+    position: absolute;
     margin-left: -300px;
     background-color: #100901;
     transition: 0.5s;
+    z-index: 1000;
   }
   
   .nav-link:active,
   .nav-link:focus,
   .nav-link:hover {
-    background-color: #ffffff26;
+    background-color: #fd002a63;
   }
   
   .my-container {
@@ -92,18 +93,20 @@ a:link, a:visited{
   }
   
   .active-nav {
-    margin-left: 0;
+    margin-top: 50px;
+    margin-left: -25px;
   }
   
   /* for main section */
   .active-cont {
-    margin-left: 180px;
+
+    
   }
   
   #menu-btn {
     background-color: #100901;
     color: #fff;
-    margin-left: -62px;
+    margin-left: -10px;
   }
   
   .my-container input {
