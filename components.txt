@@ -1,0 +1,35 @@
+User:
+	email
+	name
+	gender
+	birthday
+	favorits
+	ratings
+Movie:
+	title
+	description
+	image
+	tags
+	actors
+	creator
+	relase_date
+	ratings
+	url_trailer
+	mpa_fr
+Tags:
+	name
+Rating:
+	movie
+	user
+	stars
+	rate_date
+Actors:
+	first_name
+	last_name
+	birth_date
+	bio
+	facebook
+	birth_place
+	movies
+
+	

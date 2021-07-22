@@ -19,6 +19,7 @@ class TagViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         pattern = r"^(?![a-zA-Z0-9]+).*$"
+        print(request.data)
         if re.search(pattern, request.data["name"]):
             return Response(
                 {"Error": "Tag name is not valide!"},

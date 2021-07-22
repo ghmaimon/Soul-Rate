@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import logo from '../../images/logo.png'
 
-
 import './navBar.css'
-
-var menu_btn = document.querySelector("#menu-btn");
-var sidebar = document.querySelector("#sidebar");
-var container = document.querySelector(".my-container");
 
 class NavBar extends Component{
 
