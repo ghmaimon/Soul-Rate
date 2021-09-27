@@ -21,4 +21,5 @@ urlpatterns = [
     path('api/user/', include('user.urls')),
     path('api/rate/', include('movie_rate.urls')),
     path('api/movie/', include('movie.urls')),
+    path('api/tag/', include('tag.urls')),
 ]

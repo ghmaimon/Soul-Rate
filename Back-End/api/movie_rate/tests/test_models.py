@@ -1,10 +1,10 @@
-from core.models import Movie, Rating, Tag
+from core.models import Movie, Rating
 
 from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient, APITestCase
 from django.urls import reverse
 
-TAGS_URL = reverse('movie_rate:tags-list')
+TAGS_URL = reverse('tag:tags-list')
 
 
 class ModelTests(APITestCase):
@@ -52,13 +52,3 @@ class ModelTests(APITestCase):
         self.assertEqual(rate.user.email, email)
         self.assertTrue(rate.user.check_password(password))
         self.assertEqual(rate.stars, stars)
-
-    def test_create_tag(self):
-
-        name = "tagExemple"
-        tag = Tag(name=name)
-        tag.save()
-
-        tag = Tag.objects.get(name=name)
-
-        self.assertEquals(str(name), name)

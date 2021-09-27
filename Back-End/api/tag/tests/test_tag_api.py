@@ -5,10 +5,10 @@ from core.models import Tag, Movie
 from django.contrib.auth import get_user_model
 
 
-from movie_rate.serializers import TagSerializer
+from tag.serializers import TagSerializer
 from movie.serializers import MovieListSerializer
 
-TAGS_URL = reverse('movie_rate:tags-list')
+TAGS_URL = reverse('tag:tags-list')
 
 
 class TestTagApi(APITestCase):
