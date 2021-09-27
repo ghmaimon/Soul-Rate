@@ -46,6 +46,10 @@ INSTALLED_APPS = [
     'core',
     'movie_rate',
     'corsheaders',
+    'director',
+    'movie_comment',
+    'movie',
+    'star',
     
 ]
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Rating, Movie, Tag
+from core.models import Rating, Tag
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -9,33 +9,6 @@ class TagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = ['id', 'name']
         read_only_fields = ('id',)
-
-
-class MovieDetailSerializer(serializers.ModelSerializer):
-    tags = serializers.StringRelatedField(many=True)
-
-    class Meta:
-        model = Movie
-        fields = [
-            'id',
-            'title',
-            'description',
-            'ratingsByUsers',
-            'avrRating',
-            'numberOfRatinfs',
-            'image',
-            'tags'
-        ]
-
-
-class MovieListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Movie
-        fields = [
-            'id',
-            'title',
-            'image',
-        ]
 
 
 class RatingSerializer(serializers.ModelSerializer):

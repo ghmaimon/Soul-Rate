@@ -1,11 +1,10 @@
 from django.urls import path, include
 from rest_framework import routers
-from .views import MovieViewSet, RatingViewSet, TagViewSet
+from .views import RatingViewSet, TagViewSet
 
 
 router = routers.DefaultRouter()
-router.register('movies', MovieViewSet, basename="movies")
-router.register('ratings', RatingViewSet)
+router.register('ratings', RatingViewSet, basename="ratings")
 router.register('tags', TagViewSet, basename="tags")
 
 app_name = "movie_rate"

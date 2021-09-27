@@ -5,7 +5,8 @@ from core.models import Tag, Movie
 from django.contrib.auth import get_user_model
 
 
-from movie_rate.serializers import MovieListSerializer, TagSerializer
+from movie_rate.serializers import TagSerializer
+from movie.serializers import MovieListSerializer
 
 TAGS_URL = reverse('movie_rate:tags-list')
 
@@ -62,7 +63,7 @@ class TestTagApi(APITestCase):
         self.movie.save()
 
         res = self.client.get(
-            reverse('movie_rate:movies-detail', args=(self.movie.id, ))
+            reverse('movie:movies-detail', args=(self.movie.id, ))
         )
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
@@ -89,11 +90,11 @@ class TestTagApi(APITestCase):
         anotherMovie.save()
 
         res1 = self.client.get(
-            reverse('movie_rate:movies-withTag', args=[actionTag.id, ])
+            reverse('movie:movies-withTag', args=[actionTag.id, ])
         )
 
         res2 = self.client.get(
-            reverse('movie_rate:movies-withTag', args=[romanceTag.id, ])
+            reverse('movie:movies-withTag', args=[romanceTag.id, ])
         )
         self.assertEqual(res1.status_code, status.HTTP_200_OK)
         self.assertEqual(res2.status_code, status.HTTP_200_OK)

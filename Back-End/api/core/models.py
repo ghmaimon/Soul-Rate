@@ -62,11 +62,38 @@ class Tag(models.Model):
         return self.name
 
 
+class Star(models.Model):
+    name = models.CharField(max_length=60)
+    bio = models.TextField(max_length=255)
+    birth_day = models.DateField(null=False)
+    birth_place = models.CharField(max_length=30)
+    image = models.ImageField(upload_to="images/stars")
+
+    def __str__(self):
+        return self.name
+
+
+class Director(models.Model):
+    name = models.CharField(max_length=60)
+    bio = models.TextField(max_length=255)
+    birth_day = models.DateField(null=False)
+    birth_place = models.CharField(max_length=30)
+    image = models.ImageField(upload_to="images/directors")
+
+    def __str__(self):
+        return self.name
+
+
 class Movie(models.Model):
     title = models.CharField(max_length=30)
     description = models.TextField(max_length=1023)
-    image = models.ImageField(upload_to="movies", blank=True)
+    image = models.ImageField(upload_to="images/movies", blank=True)
     tags = models.ManyToManyField(Tag, default=None, blank=True)
+    stars = models.ManyToManyField(Star, default=None, blank=True)
+    directors = models.ManyToManyField(Director, default=None, blank=True)
+    release_date = models.DateField(null=True)
+    pg_rating = models.CharField(max_length=30, null=True)
+    trailer = models.CharField(max_length=120, null=True)
 
     def avrRating(self):
         ratings = Rating.objects.filter(movie=self)
@@ -85,9 +112,13 @@ class Movie(models.Model):
             temp[f'{rating.user}'] = rating.stars
         return temp
 
-    def numberOfRatinfs(self):
+    def numberOfRatings(self):
         ratings = Rating.objects.filter(movie=self)
         return len(ratings)
+
+    def numberOfComments(self):
+        comments = Comment.objects.filter(movie=self)
+        return len(comments)
 
     def __str__(self):
         return self.title
@@ -108,6 +139,25 @@ class Rating(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
     rate_date = models.DateTimeField(auto_now_add=True, blank=True)
+
+    class Meta:
+        unique_together = (('user', 'movie'), )
+        index_together = (('user', 'movie'), )
+
+
+class Comment(models.Model):
+    movie = models.ForeignKey(
+        Movie,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+    content = models.TextField(max_length=511)
+    comment_date = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         unique_together = (('user', 'movie'), )
