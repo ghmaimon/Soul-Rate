@@ -4,6 +4,8 @@ from core.models import Movie
 
 class MovieDetailSerializer(serializers.ModelSerializer):
     tags = serializers.StringRelatedField(many=True)
+    stars = serializers.StringRelatedField(many=True)
+    directors = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Movie
@@ -15,7 +17,9 @@ class MovieDetailSerializer(serializers.ModelSerializer):
             'avrRating',
             'numberOfRatings',
             'image',
-            'tags'
+            'tags',
+            'stars',
+            'directors'
         ]
 
 

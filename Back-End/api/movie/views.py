@@ -21,9 +21,35 @@ class MovieViewSet(viewsets.ModelViewSet):
         serializer = MovieDetailSerializer(movie)
         return Response(serializer.data, status.HTTP_200_OK)
 
-    @action(detail=False, methods=["GET"], url_path='with_tag/(?P<tag>[^/.]+)')
+    @action(
+        detail=False,
+        methods=["GET"],
+        url_path='with_tag/(?P<tag>[^/.]+)'
+        )
     def withTag(self, request, tag=None):
         # retrieve movies with a given tag
         movies = Movie.objects.filter(tags__in=[tag, ])
+        moviesSer = MovieListSerializer(movies, many=True)
+        return Response(moviesSer.data, status.HTTP_200_OK)
+
+    @action(
+        detail=False,
+        methods=["GET"],
+        url_path='with_star/(?P<star>[^/.]+)'
+        )
+    def withStar(self, request, star=None):
+        # retrieve movies with a given tag
+        movies = Movie.objects.filter(stars__in=[star, ])
+        moviesSer = MovieListSerializer(movies, many=True)
+        return Response(moviesSer.data, status.HTTP_200_OK)
+
+    @action(
+        detail=False,
+        methods=["GET"],
+        url_path='with_director/(?P<director>[^/.]+)'
+        )
+    def withDirector(self, request, director=None):
+        # retrieve movies with a given tag
+        movies = Movie.objects.filter(directors__in=[director, ])
         moviesSer = MovieListSerializer(movies, many=True)
         return Response(moviesSer.data, status.HTTP_200_OK)

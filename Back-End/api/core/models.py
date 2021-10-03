@@ -64,10 +64,10 @@ class Tag(models.Model):
 
 class Star(models.Model):
     name = models.CharField(max_length=60)
-    bio = models.TextField(max_length=255)
-    birth_day = models.DateField(null=False)
-    birth_place = models.CharField(max_length=30)
-    image = models.ImageField(upload_to="images/stars")
+    bio = models.TextField(max_length=255, null=True)
+    birth_day = models.DateField(null=True)
+    birth_place = models.CharField(max_length=30, null=True)
+    image = models.ImageField(upload_to="images/stars", null=True)
 
     def __str__(self):
         return self.name
@@ -75,10 +75,10 @@ class Star(models.Model):
 
 class Director(models.Model):
     name = models.CharField(max_length=60)
-    bio = models.TextField(max_length=255)
-    birth_day = models.DateField(null=False)
-    birth_place = models.CharField(max_length=30)
-    image = models.ImageField(upload_to="images/directors")
+    bio = models.TextField(max_length=255, null=True)
+    birth_day = models.DateField(null=True)
+    birth_place = models.CharField(max_length=30, null=True)
+    image = models.ImageField(upload_to="images/directors", null=True)
 
     def __str__(self):
         return self.name

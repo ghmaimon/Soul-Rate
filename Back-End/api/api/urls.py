@@ -22,4 +22,6 @@ urlpatterns = [
     path('api/rate/', include('movie_rate.urls')),
     path('api/movie/', include('movie.urls')),
     path('api/tag/', include('tag.urls')),
+    path('api/star/', include('star.urls')),
+    path('api/director/', include('director.urls')),
 ]
