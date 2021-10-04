@@ -1,5 +1,4 @@
 from core.models import Movie, Rating
-
 from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient, APITestCase
 from django.urls import reverse

@@ -160,5 +160,4 @@ class Comment(models.Model):
     comment_date = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
-        unique_together = (('user', 'movie'), )
         index_together = (('user', 'movie'), )

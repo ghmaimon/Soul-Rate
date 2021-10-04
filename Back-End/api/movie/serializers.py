@@ -19,7 +19,8 @@ class MovieDetailSerializer(serializers.ModelSerializer):
             'image',
             'tags',
             'stars',
-            'directors'
+            'directors',
+            'comments'
         ]
 
 

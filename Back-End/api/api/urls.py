@@ -24,4 +24,5 @@ urlpatterns = [
     path('api/tag/', include('tag.urls')),
     path('api/star/', include('star.urls')),
     path('api/director/', include('director.urls')),
+    path('api/comment', include('movie_comment.urls')),
 ]
