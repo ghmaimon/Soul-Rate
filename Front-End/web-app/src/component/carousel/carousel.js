@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import Carousel_movie from '../carousel_movie/carousel_movie';
 import axios from 'axios';
-
+import item1 from '../../images/item1.jpg'
+import item2 from '../../images/item2.jpg'
+import item3 from '../../images/item3.jpg'
 import "./carousel.css"
 class Carousel extends Component{
 
@@ -22,7 +24,7 @@ class Carousel extends Component{
 
     render(){
 
-        let movie_cards = this.state.movies.map(movie => <Carousel_movie title={movie.title} image={movie.image} description="something"/>);
+        let movie_cards = this.state.movies.map(movie => <Carousel_movie title="dd"/>);
         return(
             <div>
               <div id="card" className="col-8 card">
@@ -38,13 +40,18 @@ class Carousel extends Component{
                               <span className="visually-hidden">Next</span>
                             </button>
 
-                            <div>{movie_cards}</div>
+                            <div className="card bg-aqua">
+                              <Carousel_movie title={"fzef"}/>
+
+                              {movie_cards}
+                            </div>
+                            {/*<img src={item1} className="w-25 rounded mx-auto d-block " alt="..."/>*/}
 
                     </div>
                 </div>
               </div>
               <div className="card bg-warning">
-                .
+                .III
               </div>
             </div>
         )
