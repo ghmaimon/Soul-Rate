@@ -41,9 +41,9 @@ class Carousel extends Component{
                             </button>
 
                             <div className="card bg-aqua">
-                              <Carousel_movie title={"fzef"}/>
+                              <Carousel_movie title={"Spider-Man"} description={"this movie is about bla bla bla"} image={item1}/>
 
-                              {movie_cards}
+                              {/*movie_cards*/}
                             </div>
                             {/*<img src={item1} className="w-25 rounded mx-auto d-block " alt="..."/>*/}
 

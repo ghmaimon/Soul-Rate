@@ -30,7 +30,7 @@ class MoviesWraper extends Component{
             <div className="movies">
                 <div className="container">
                     <div className="row pt-5">
-
+                        
                     </div>
                 </div> 
             </div>     
