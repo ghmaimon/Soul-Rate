@@ -9,10 +9,7 @@ class Home extends Component{
         <div className="header">
             
     <Carousel/>
-    <a href="" className="border-bottom">Movies Comming Soon</a><br/><Slide/>
-    <a href="" className="border-bottom">Movies In Box Office</a><br/><Slide/>
-    <a href="" className="border-bottom">Shows In Netflix</a><br/><Slide/>
-    <a href="" className="border-bottom">Shows In Disney+</a><br/><Slide/>
+
     
     <Footer/>
       </div>

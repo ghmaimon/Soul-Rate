@@ -1,0 +1,8 @@
+#carouselContainer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+#item1{
+    padding: 5px;
+}

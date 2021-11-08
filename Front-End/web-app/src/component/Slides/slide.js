@@ -29,48 +29,38 @@ class Slide extends Component {
                                 <div className="col">
                                     <div className="col-md-12">
 
-                                                    <div className="row">
-                                                        <div className="col-sm-3">
-                                                            <div className="thumb-wrapper">
-                                                                <div className="img-box">
-                                                                    <img src={item1} className="w-25 rounded mx-auto d-block" alt="" />
-                                                                </div>
-                                                                <div className="thumb-content">
-                                                                    <h4>HeadLine of News</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-sm-3">
-                                                            <div className="thumb-wrapper">
-                                                                <div className="img-box">
-                                                                    <img src={item2} className="w-25 rounded mx-auto d-block" alt="" />
-                                                                </div>
-                                                                <div className="thumb-content">
-                                                                    <h4>HeadLine of News</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-sm-3">
-                                                            <div className="thumb-wrapper">
-                                                                <div className="img-box">
-                                                                    <img src={item2} className="w-25 rounded mx-auto d-block" alt="" />
-                                                                </div>
-                                                                <div className="thumb-content">
-                                                                    <h4>HeadLine of News</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-sm-3">
-                                                            <div className="thumb-wrapper">
-                                                                <div className="img-box">
-                                                                    <img src={item3} className="w-25 rounded mx-auto d-block" alt="" />
-                                                                </div>
-                                                                <div className="thumb-content">
-                                                                    <h4>HeadLine of News</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                        <div id="carouselContainer" className="row">
+                                            <div id="item1" className="col-sm-3">
+                                                <div className="thumb-wrapper">
+                                                    <div className="img-box">
+                                                        <img src={item1} className="w-50 rounded mx-auto d-block" alt="" />
                                                     </div>
+                                                    <div className="thumb-content">
+                                                        <h4>HeadLine of News</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="item1" className="col-sm-3">
+                                                <div className="thumb-wrapper">
+                                                    <div className="img-box">
+                                                        <img src={item2} className="w-50 rounded mx-auto d-block" alt="" />
+                                                    </div>
+                                                    <div className="thumb-content">
+                                                        <h4>HeadLine of News</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="item1" className="col-sm-3">
+                                                <div className="thumb-wrapper">
+                                                    <div className="img-box">
+                                                        <img src={item3} className="w-50 rounded mx-auto d-block" alt="" />
+                                                    </div>
+                                                    <div className="thumb-content">
+                                                        <h4>HeadLine of News</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
