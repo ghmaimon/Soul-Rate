@@ -29,7 +29,7 @@ class Login extends Component {
                   <div className="form-group ">
                     <label className="EmailPass">Email</label>
                     <div className="input input-group mb-4">
-                      <span className="input-group-text "><i id="iUser"  className="bi bi-envelope-open"></i></span>
+                      <span className="input-group-text "><i id="iUser" className="bi bi-envelope-open"></i></span>
                       <input id="inp" onChange={this.handleEmail} type="text" className="form-control" placeholder="Enter Email" />
                     </div>
                   </div>
@@ -45,7 +45,7 @@ class Login extends Component {
               <div className="BTN">
                 <button id="btn2" type="submit">Login</button>
               </div>
-              <div id="cantLogin">              
+              <div id="cantLogin">
                 <p><a href="">Can't log in ?</a></p>
                 <p>Privacy policy Terms of use</p>
               </div>

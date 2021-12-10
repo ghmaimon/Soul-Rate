@@ -54,13 +54,14 @@ class Carousel extends Component {
               </div>
             </div>
             <div className="row">
-              <a href="" className="border-bottom">Movies Comming Soon</a><br /><Slide />
-              <a href="" className="border-bottom">Movies In Box Office</a><br /><Slide />
-              <a href="" className="border-bottom">Shows In Netflix</a><br /><Slide />
-              <a href="" className="border-bottom">Shows In Disney+</a><br /><Slide />
+              <a href="" className="Header2">Movies Comming Soon</a><br /><Slide />
+              <a href="" className="Header2">Movies In Box Office</a><br /><Slide />
+              <a href="" className="Header2">Shows In Netflix</a><br /><Slide />
+              <a href="" className="Header2">Shows In Disney+</a><br /><Slide />
             </div>
           </div>
           <div id="card" className="col-3">
+            <h1 className="Header1">Reviews</h1>
             <div id="card123" className="card mb-3" >
               <div className="row g-0">
                 <div className="col-md-4">

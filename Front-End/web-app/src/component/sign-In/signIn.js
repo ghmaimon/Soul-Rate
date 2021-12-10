@@ -43,19 +43,18 @@ class SignIn extends Component {
     render() {
         return (
             <Fragment>
-                <div className="sign-in">
-                    <div className="backGround"></div>
+                <div className="signIn">
                     <div className="container col-8 position-relative text-light ">
                         <div id="signInForm" className="row rounded mx-auto">
-                            <div className="position-relative pt-5 text-light">
-                                <form className="border-orange">
+                            <div className="position-relative pt-3 text-light">
+                                <form>
                                     <h3>Register</h3>
                                     <div className="form-group ">
                                         <label>First Name</label>
 
                                         <div className="input-group mb-3">
                                             <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1"><i id="iUser"  className="bi bi-person-fill"></i></span>
+                                                <span className="input-group-text" id="basic-addon1"><i id="iUser" className="bi bi-person-fill"></i></span>
                                             </div>
                                             <input id="inp" onChange={this.handleFirstName} type="text" className="form-control" placeholder="Enter First Name" />
                                         </div>
@@ -66,7 +65,7 @@ class SignIn extends Component {
 
                                         <div className="input-group mb-3">
                                             <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1"><i id="iUser"  className="bi bi-person"></i></span>
+                                                <span className="input-group-text" id="basic-addon1"><i id="iUser" className="bi bi-person"></i></span>
                                             </div>
                                             <input id="inp" onChange={this.handleLastName} type="text" className="form-control" placeholder="Enter Last Name" />
                                         </div>
@@ -78,7 +77,7 @@ class SignIn extends Component {
 
                                         <div className="input-group mb-3">
                                             <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1"><i id="iUser"  className="bi bi-envelope-open"></i></span>
+                                                <span className="input-group-text" id="basic-addon1"><i id="iUser" className="bi bi-envelope-open"></i></span>
                                             </div>
                                             <input id="inp" onChange={this.handleEmail} type="text" className="form-control" placeholder="Enter Email" />
                                         </div>
@@ -89,7 +88,7 @@ class SignIn extends Component {
 
                                         <div className="input-group mb-3">
                                             <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1"><i id="iUser"  className="bi bi-key"></i></span>
+                                                <span className="input-group-text" id="basic-addon1"><i id="iUser" className="bi bi-key"></i></span>
                                             </div>
                                             <input id="inp" onChange={this.handlePassword} type="password" className="form-control" placeholder="Enter password" />
                                         </div>
@@ -101,7 +100,7 @@ class SignIn extends Component {
 
                                         <div className="input-group mb-3">
                                             <div className="input-group-prepend">
-                                                <span className="input-group-text" id="basic-addon1"><i id="iUser"  className="bi bi-calendar2-week"></i></span>
+                                                <span className="input-group-text" id="basic-addon1"><i id="iUser" className="bi bi-calendar2-week"></i></span>
                                             </div>
                                             <input id="inp" onChange={this.handleDate} type="datetime-local" className="form-control date" placeholder="Select your Birthday" />
                                         </div>
@@ -111,7 +110,7 @@ class SignIn extends Component {
                                     <div className="form-check col-6">
                                         <input className="form-check-input" type="radio" name="gender" value="male" onChange={this.handleGender} />
                                         <label className="form-check-label" for="gridRadios1">Male</label>
-                                        &emsp;
+                                        
                                         <br />
                                         <input className="form-check-input" type="radio" name="gender" value="female" onChange={this.handleGender} />
                                         <label className="form-check-label" for="gridRadios1">Female </label>

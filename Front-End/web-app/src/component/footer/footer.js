@@ -24,8 +24,8 @@ function Footer(props) {
 		              moafkzepofk<br />
 		              <i className="fa fa-phone fa-lg"></i>  : +852 1234 5678<br />
 		              <i className="fa fa-fax fa-lg"></i>  : +852 8765 4321<br />
-		              <i className="fa fa-envelope fa-lg"></i>  : <a href="https://www.imdb.com/">
-                         www.imdb.com</a>
+		              <i className="fa fa-envelope fa-lg"></i>  : <a href=".">
+                         www.SoulRate.com</a>
                     </address>
                 </div>
                 <div className="col-12 col-sm-4 align-self-center">
