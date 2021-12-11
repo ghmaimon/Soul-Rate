@@ -4,10 +4,24 @@
     padding: 0;
     
 }
-.navBar{
+#btnNavCollapse{
+  position: absolute;
+  right: 1%;
+  z-index: 9999;
+}
+
+#iconBtn:hover{
+  color: rgba(255, 153, 0);
+}
+.navLinks{
+  display: flex;
+  
+}
+#navBar{
     background-color: #24252A;
     background-image: linear-gradient(to bottom, #24252A,#370617);
     box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.336);
+    
 }
 ul{
   margin: 0;
@@ -30,12 +44,19 @@ a:link, a:visited{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1px 2%;
+    position:absolute;
+    right: 0%;
+}
+.navItems #itm{
+  padding-right: 50px;
+  letter-spacing: 2px;
+}
+.navItems #itm:hover{
+  color: rgb(255, 216, 193);
 }
 .navLeft{
     display: flex;
     align-items: center;
-    padding-right: 25%;
 }
 .navSearch{
     font-family: "Montserrat" ,sans-serif;
@@ -49,8 +70,6 @@ a:link, a:visited{
     border-radius: 10px;
     padding: 15px;
     box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.336);
-    position: relative;
-    left: 1em;
 }
 .navSearch:focus{
     outline: none;
@@ -60,29 +79,17 @@ a:link, a:visited{
     width: 50px;
 
 }
-
-
-
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-
-  
-  .side-navbar {
-    width: 180px;
-    height: 50%;
+.side-navbar {
+    z-index: 999999;
     position: absolute;
-    margin-left: -300px;
-    background-color: #100901;
-    transition: 0.5s;
-    z-index: 1000;
+    right: 2%;
+    width: 180px;
+    height: auto;
+    background-color: #180209d2;
+    backdrop-filter: blur(0.5rem);
+    border-radius: 8px;
+    opacity: 1;
   }
-  
   .nav-link:active,
   .nav-link:focus,
   .nav-link:hover {
@@ -101,7 +108,7 @@ a:link, a:visited{
 
   
   #menu-btn {
-    background-color: #100901;
+    background-color: #10090100;
     color: #fff;
     margin-left: -10px;
   }
@@ -110,4 +117,23 @@ a:link, a:visited{
     border-radius: 2rem;
     padding: 2px 20px;
   }
+  @media (max-width:992px) {
+          .navLinks{
+            display: block;
+          }
+          .navItems{
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            left: -20%;
+          }
+
+}
+@media (max-width:392px) {
+  .navSearch{
+    width: 30vh;
+  }
   
+}

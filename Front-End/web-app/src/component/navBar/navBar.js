@@ -27,74 +27,57 @@ class NavBar extends Component {
 
 
     return (
-      <div className="navBar">
-        <ul className="navLinks">
-          <div className="navItems">
-            <div className="navLeft">
-              <Link exact to='/'><img src={logo} alt="Logo" className="logo" /></Link>
-              <input type="text" className="navSearch"></input>
-            </div>
-
-            <Link to='/movies'>Movies</Link>
-            <Link to='/news'>News</Link>
-            <Link to='/login'>login</Link>
-            <Link to='/sign_in'>Sign_in</Link>
-
-            {/*<div className="dropdown">
-  <a className="btn btn-secondary dropdown-toggle border-rad" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-    <img src="..." alt="profile"/>
-  </a>
-
-  <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
-    <li><Link to='/profile' className="dropdown-item">Profile</Link></li>
-    <li><a className="dropdown-item" href="#">Profile info</a></li>
-    <li><a className="dropdown-item" href="#">favorite</a></li>
-  </ul>
-
-    </div>*/}
-            <div>
-              <div className="collapse" id="content">
-                <div
-                  className="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
-                  id="sidebar"
-                >
-                  <ul className="nav flex-column text-white w-100">
-                    <a href="#" className="border-bottom nav-link h3 text-white my-2">
-                      <img className="logo" src={logo} alt="..." />
-                      <h4>Profile Name</h4>
-                      <p>see your profile</p>
-                    </a>
-                    <a href="#" className="nav-link h3 text-white my-2">
-                      <i className="bx bxs-dashboard"></i>Home
-                    </a>
-                    <a href="#" className="nav-link h3 text-white my-2">
-                      <i className="bi bi-gear"></i>Setting
-                    </a>
-                    <a href="#" className="nav-link h3 text-white my-2">
-                      <i className="bi bi-question-circle"></i>Help
-                    </a>
-                    <a href="#" className="nav-link h3 text-white my-2">
-                      <i className="bi bi-box-arrow-left"></i>Log out
-                    </a>
-                  </ul>
-                </div>
-              </div>
-
-
-              <div
-                className="p-1 my-container active-cont" >
-                <nav className="navbar top-navbar navbar-light px-5">
-                  <button className="btn border-0" id="menu-btn" data-bs-toggle="collapse" href="#content" role="button" aria-expanded="false" aria-controls="content"><i className="bi bi-caret-down-square"></i></button>
-                </nav>
-              </div>
-
-
-
-            </div>
-
+      <div id="navBar" className="navbar navbar-expand-lg">
+        <div className="navLinks">
+          <div className="navLeft">
+            <Link exact to='/'><img src={logo} alt="Logo" className="logo" /></Link>
+            <input type="text" className="navSearch"></input>
+            <button id="btnNavCollapse" className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent1" aria-controls="navContent1" aria-expanded="false" aria-label="Toggle navigation">
+              <i id="iconBtn" className="bi bi-list fs-1"></i>
+            </button>
           </div>
-        </ul>
+          <div className="collapse navbar-collapse" id="navContent1">
+            <div className="navItems">
+              <Link to='/movies' id="itm">Movies</Link>
+              <Link to='/news' id="itm">News</Link>
+              <Link to='/login' id="itm">login</Link>
+              <Link to='/sign_in' id="itm">Sign_in</Link>
+              <div>
+                <div className="collapse" id="content">
+                  <div
+                    className="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
+                    id="sidebar"
+                  >
+                    <ul className="nav flex-column text-white w-100">
+                      <a href="#" className="border-bottom nav-link h3 text-white my-2">
+                        <img className="logo" src={logo} alt="..." />
+                        <h4>Profile Name</h4>
+                        <p>see your profile</p>
+                      </a>
+                      <a href="#" className="nav-link h3 text-white my-2">
+                        <i className="bx bxs-dashboard"></i>Home
+                      </a>
+                      <a href="#" className="nav-link h3 text-white my-2">
+                        <i className="bi bi-gear"></i>Setting
+                      </a>
+                      <a href="#" className="nav-link h3 text-white my-2">
+                        <i className="bi bi-question-circle"></i>Help
+                      </a>
+                      <a href="#" className="nav-link h3 text-white my-2">
+                        <i className="bi bi-box-arrow-left"></i>Log out
+                      </a>
+                    </ul>
+                  </div>
+                </div>
+                <button className="btn border-0" id="menu-btn" data-bs-toggle="collapse" href="#content" role="button" aria-expanded="false" aria-controls="content">
+                  <i className="bi bi-person-circle fs-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     )
   }
 }
