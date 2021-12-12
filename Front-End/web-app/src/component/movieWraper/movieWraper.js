@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import avenger from '../../images/avengers.jpg'
 import { Button } from 'bootstrap';
-
 class MoviesWraper extends Component {
 
     state = {
@@ -34,11 +33,11 @@ class MoviesWraper extends Component {
                         <div id="rowCollapse" className="row col-12">
                             <span className="NavCollapse">
                                 <h2>Filter Movie :</h2>
-                                <p>
+                                
                                     <button id="btnCollapse" className="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                                         <i className="bi bi-chevron-double-down fs-5"></i>
                                     </button>
-                                </p>
+                                
                             </span>
                             <div >{/* style="min-height: 120px;"*/}
                                 <div className="collapse collapse-horizontal" id="collapseWidthExample">

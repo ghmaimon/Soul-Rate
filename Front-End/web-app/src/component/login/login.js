@@ -20,9 +20,9 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
-        <div className="login">
-          <div className="container col-8 position-relative text-light">
-            <div id="LoginForm" className="row rounded mx-auto">
+        <div className="header">
+          <div className="row position-relative text-light">
+            <div id="LoginForm" className="row rounded mx-auto my-5">
               <div className="position-relative pt-5 text-light">
                 <form>
                   <h3 className="fs-1 ">Login</h3>

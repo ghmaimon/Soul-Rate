@@ -48,28 +48,28 @@ class NavBar extends Component {
                     className="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
                     id="sidebar"
                   >
-                    <ul className="nav flex-column text-white w-100">
+                    <ul className="nav flex-column text-white w-100 gap-3">
                       <a href="#" className="border-bottom nav-link h3 text-white my-2">
-                        <img className="logo" src={logo} alt="..." />
+                        <img className="logo bg-warning rounded-circle ms-5" src={logo} alt="..." />
                         <h4>Profile Name</h4>
                         <p>see your profile</p>
                       </a>
-                      <a href="#" className="nav-link h3 text-white my-2">
-                        <i className="bx bxs-dashboard"></i>Home
+                      <a href="#" className="nav-link h3 text-white mx-2 py-3">
+                        <i className="bx bxs-dashboard pe-2"></i><span>Home</span>
                       </a>
-                      <a href="#" className="nav-link h3 text-white my-2">
-                        <i className="bi bi-gear"></i>Setting
+                      <a href="#" className="nav-link h3 text-white mx-2 py-3">
+                        <i className="bi bi-gear pe-2"></i><span>Setting</span>
                       </a>
-                      <a href="#" className="nav-link h3 text-white my-2">
-                        <i className="bi bi-question-circle"></i>Help
+                      <a href="#" className="nav-link h3 text-white mx-2 py-3">
+                        <i className="bi bi-question-circle pe-2"></i><span>Help</span>
                       </a>
-                      <a href="#" className="nav-link h3 text-white my-2">
-                        <i className="bi bi-box-arrow-left"></i>Log out
+                      <a href="#" className="nav-link h3 text-white mx-2 py-3">
+                        <i className="bi bi-box-arrow-left pe-2"></i><span>Log out</span>
                       </a>
                     </ul>
                   </div>
                 </div>
-                <button className="btn border-0" id="menu-btn" data-bs-toggle="collapse" href="#content" role="button" aria-expanded="false" aria-controls="content">
+                <button className="btn border-0 me-3" id="menu-btn" data-bs-toggle="collapse" href="#content" role="button" aria-expanded="false" aria-controls="content">
                   <i className="bi bi-person-circle fs-2"></i>
                 </button>
               </div>
