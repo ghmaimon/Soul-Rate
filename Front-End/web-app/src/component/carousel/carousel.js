@@ -29,7 +29,7 @@ class Carousel extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-9">
+          <div className="col-9 mt-4">
             <div id="backgroundNone" className="row card">
               <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
@@ -42,7 +42,7 @@ class Carousel extends Component {
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
                   </button>
-                  
+
                   <div id="card12" className="card bg-aqua">
                     <Carousel_movie title={"Spider-Man"} description={"this movie is about bla bla bla"} image={item1} />
 
@@ -60,7 +60,7 @@ class Carousel extends Component {
               <a href="" className="Header2">Shows In Disney+</a><br /><Slide />
             </div>
           </div>
-          <div id="card" className="col-3">
+          <div id="card" className="col-3 mt-4">
             <h1 className="Header1">Reviews</h1>
             <div id="card123" className="card mb-3" >
               <div className="row g-0">
