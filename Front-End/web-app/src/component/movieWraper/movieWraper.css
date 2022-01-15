@@ -18,7 +18,11 @@
     backdrop-filter: blur(0.4rem);
 }
 .NavCollapse{
-    
+    border-bottom: 2px solid rgb(255, 187, 0);
+    text-shadow: 6px 2px 9px #000000;
+    color: rgb(255, 248, 230);
+    text-align: center;
+    align-items: center;
     display: flex;
     flex-direction:row;
     padding: 10px;
@@ -28,9 +32,13 @@
     border:solid rgb(240, 240, 240) ;
     border-radius: 99px;
 }
+#btnCollapse:hover{
+    background-color:rgba(3, 7, 30, 0.507);
+}
 #btnMoreDetails{
     color: black;
     letter-spacing: 3px;
+    white-space:nowrap;
 }
 #formMovieWraper{
     width: auto;
@@ -42,7 +50,8 @@
 }
 #genres{
     /*padding-left: 20px;*/
-    background-color:rgba(218, 218, 218, 0.514);
+    background-color:rgba(36, 36, 36, 0.514);
+    font-size: large;
 
 }
 #formFilter{

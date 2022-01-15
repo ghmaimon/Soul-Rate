@@ -37,15 +37,14 @@ class MovieDetails extends Component {
 
 
         return (
-            <div className="movies">
+            <div className="header ">
                 {this.display(this.state.open)}
+                <div className="container-fluid d-flex">
+                    <div id="row" className="row my-5 mx-5">
 
-                <div className="container-fluid">
-                    <div id="row" className="row  ">
-
-                        <div className=" col-lg-3 col-md-3 col-sm-12 col-xs-12  d-flex justify-content-center justify-content-md-start pt-3" >
-                            <div id="card1" className="card">
-                                <img src={avengers} className="card-img-top" alt="..." />
+                        <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12  d-flex justify-content-center justify-content-md-start pt-3" >
+                            <div id="card1" className="card my-5">
+                                <img src={avengers} className="card-img-top " alt="..." />
 
                                 <a onClick={this.changeStateHandler} id="btn" href="#" className="btn btn-danger"><i id="btn" className="bi bi-collection-play-fill"></i>Trailer</a>
                             </div>
