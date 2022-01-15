@@ -5,7 +5,7 @@ import './news.css'
 class News extends Component {
   render() {
     return (
-      <div className="header">
+      <div className="login">
         <div className="row">
           <div className="col-9">
             <div id="cardContainer" className="row me-4 ms-4 mt-4">
