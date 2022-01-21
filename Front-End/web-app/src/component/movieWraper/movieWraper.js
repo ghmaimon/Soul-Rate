@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import avenger from '../../images/avengers.jpg'
 import { Button } from 'bootstrap';
+import MovieCard from '../movieCard/movieCard';
 class MoviesWraper extends Component {
 
     state = {
@@ -11,18 +12,15 @@ class MoviesWraper extends Component {
     }
 
     async componentDidMount() {
-        await axios.get("http://0.0.0.0:8000/api/movies/movies/", {
+        await axios.get("http://0.0.0.0:8000/api/movie/movies/", {
             headers: {
-                "Authorization": "Token 14c3eaaa37d8a17430b3a866ed0bd1b4fa2da432"
+                "Authorization": "Token ec1319eeefcbdee61483df24715ed2ecd1fad935"
             }
         }).then(
             (res) => {
                 this.setState({ ...this.state, listMovies: res.data })
-                console.log(res.data);
             }
         )
-
-        console.log(this.state.listMovies);
     }
     render() {
 
@@ -73,40 +71,15 @@ class MoviesWraper extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div id="cardContainer" className="row">
-                            <div id="cardMovieWraper" className="card">
-                                <img src={avenger} className="card-img-top mx-auto d-bloc" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <Link to='/moviesDetails' href="#" id="btnMoreDetails" className="btn btn-warning"><i id="iUser" className="bi bi-bookmark-plus-fill"></i>more</Link>
-                                </div>
+                            <div id="cardContainer" className="row">
+                                {this.state.listMovies.map((movie) => {
+                                    return (<MovieCard key={movie.id} title = {movie.title}
+                                    description = {movie.description}
+                                    link = {""}
+                                    imgSrc = {`data:image;base64,${movie.base64_image}`}
+                                    imgAlt = {"..."}/>)
+                                })}
                             </div>
-                            <div id="cardMovieWraper" className="card ">
-                                <img src={avenger} className="card-img-top mx-auto d-bloc" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" id="btnMoreDetails" className="btn btn-warning"><i id="iUser" className="bi bi-bookmark-plus-fill"></i>more</a>
-                                </div>
-                            </div>
-                            <div id="cardMovieWraper" className="card ">
-                                <img src={avenger} className="card-img-top mx-auto d-bloc" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" id="btnMoreDetails" className="btn btn-warning"><i id="iUser" className="bi bi-bookmark-plus-fill"></i>more</a>
-                                </div>
-                            </div>
-                            <div id="cardMovieWraper" className="card ">
-                                <img src={avenger} className="card-img mx-auto d-bloc" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" id="btnMoreDetails" className="btn btn-warning"><i id="iUser" className="bi bi-bookmark-plus-fill"></i>more</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

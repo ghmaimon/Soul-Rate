@@ -2,11 +2,6 @@
 #cardMovie{
     width: 10%;
 }
-#cardMovieWraper{
-    margin: 10px 20px;
-    background-color: rgba(3, 7, 30, 0.507);
-    width: 20%;
-}
 #cardContainer{
     background-color: rgba(3, 7, 30, 0.507);
    /* display: flex;
