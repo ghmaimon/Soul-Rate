@@ -19,6 +19,7 @@ class MoviesWraper extends Component {
         }).then(
             (res) => {
                 this.setState({ ...this.state, listMovies: res.data })
+                console.log(res.data)
             }
         )
     }

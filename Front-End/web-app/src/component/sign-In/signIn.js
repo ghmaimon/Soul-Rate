@@ -1,14 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import "./signIn.css"
 import { Button } from 'reactstrap'
+import axios from 'axios'
+import { Redirect } from 'react-router';
+
 class SignIn extends Component {
+
+
     state = {
+        redirect: false,
         email: "",
-        firstName: "",
-        lastName: "",
-        password: "",
-        gender: "male",
-        date: "",
+            first_name: "",
+            last_name: "",
+            password: "",
+            gender: "M",
+            date: "",
     }
     handleEmail = (e) => {
         this.setState({
@@ -17,12 +23,12 @@ class SignIn extends Component {
     }
     handleFirstName = (e) => {
         this.setState({
-            firstName: e.target.value
+            first_name: e.target.value
         })
     }
     handleLastName = (e) => {
         this.setState({
-            lastName: e.target.value
+            last_name: e.target.value
         })
     }
     handlePassword = (e) => {
@@ -40,7 +46,21 @@ class SignIn extends Component {
             gender: e.target.value
         })
     }
+
+    performSignIn = (e) => {
+        e.preventDefault();
+        axios.post("http://0.0.0.0:8000/api/user/create/", this.state).then(
+            (res) => {
+                console.log(res.data);
+                this.setState({redirect: true})
+            }
+        )
+    }
     render() {
+        const { redirect } = this.state;
+        if (redirect) {
+            return <Redirect to='/login'/>;
+        }
         return (
             <Fragment>
                 <div className="header">
@@ -108,15 +128,15 @@ class SignIn extends Component {
                                     </div>
 
                                     <div className="form-check col-6">
-                                        <input className="form-check-input" type="radio" name="gender" value="male" onChange={this.handleGender} />
+                                        <input className="form-check-input" type="radio" name="gender" value="M" onChange={this.handleGender} />
                                         <label className="form-check-label" for="gridRadios1">Male</label>
                                         
                                         <br />
-                                        <input className="form-check-input" type="radio" name="gender" value="female" onChange={this.handleGender} />
+                                        <input className="form-check-input" type="radio" name="gender" value="F" onChange={this.handleGender} />
                                         <label className="form-check-label" for="gridRadios1">Female </label>
                                     </div>
                                     <div className="BTN">
-                                        <button id="btn2" type="submit">Sign-in</button>
+                                        <button id="btn2" type="submit" onClick={this.performSignIn}>Sign-in</button>
                                     </div>
                                     <div id="cantLogin">
                                         <p><a href="">Can't Sign-in ?</a></p>
