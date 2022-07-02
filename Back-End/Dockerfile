@@ -1,4 +1,4 @@
-FROM python:3.11.0b3-bullseye
+FROM python:3.8
 LABEL key="Soul-Rate By Ghordou Mimoun"
 
 ENV PYTHONUNBUFFERED 1

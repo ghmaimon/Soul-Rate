@@ -6,4 +6,5 @@ jobs:
     python3:
       - "3.9.1"
     before_script: pip install docker-compose 
-    script: docker-compose -f Back-End/docker-compose.yml  run api sh -c "python3 manage.py test && flake8"
+    script: docker-compose run api sh -c "python3 manage.py test && flake8"
+  
