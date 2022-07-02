@@ -17,7 +17,7 @@ jobs:
         SQL_DATABASE: soul_rate
         SQL_USER: user
         SQL_PASSWORD: pass
-        SQL_PORT: ${{ job.services.postgres.ports[5432] }}
+        SQL_PORT: 5432
         SQL_HOST: db
       run: docker-compose -f Back-End/docker-compose.yml run api sh -c "python3 manage.py test && flake8"
 

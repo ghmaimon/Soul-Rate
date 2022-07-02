@@ -23,6 +23,8 @@ services:
         depends_on:
             - db
     db:
+        restart: unless-stopped
+        hostname: db
         image: postgres:13-alpine
         environment:
             - POSTGRES_DB=soul_rate
