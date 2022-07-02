@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.8.7
 LABEL key="Soul-Rate By Ghordou Mimoun"
 
 ENV PYTHONUNBUFFERED 1
