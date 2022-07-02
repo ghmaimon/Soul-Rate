@@ -1,0 +1,27 @@
+name: Soul-Rate Back-end CI/CD pipeline
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: run all the tests
+      run: docker-compose run api sh -c "python3 manage.py test && flake8"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "soul-rate-back-end"
+          heroku_email: "kaixokoko123@gmail.com"
