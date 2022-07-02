@@ -14,11 +14,11 @@ jobs:
     - uses: actions/checkout@v3
     - name: run all the tests
       env:
-        SQL_DATABASE: app
-        SQL_USER: admin
-        SQL_PASSWORD: admin
+        SQL_DATABASE: soul_rate
+        SQL_USER: user
+        SQL_PASSWORD: pass
         SQL_PORT: ${{ job.services.postgres.ports[5432] }}
-        SQL_HOST: postgres
+        SQL_HOST: db
       run: docker-compose -f Back-End/docker-compose.yml run api sh -c "python3 manage.py test && flake8"
 
   deploy:
